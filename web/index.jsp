@@ -12,6 +12,26 @@
   </head>
   <body>
 
+  <form action="springmvc/testRest/1" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <input value="Test Rest Put" type="submit">
+  </form>
+  <br><br>
+
+  <form action="springmvc/testRest/1" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input value="Test Rest Delete" type="submit">
+  </form>
+  <br><br>
+
+  <form action="springmvc/testRest" method="POST">
+    <input value="Test Rest Post" type="submit">
+  </form>
+  <br><br>
+
+  <a href="springmvc/testRest/1">Test Rest Get</a>
+  <br><br>
+
   <a href="springmvc/testPathVariable/1">Test PathVariable</a>
   <br><br>
 
