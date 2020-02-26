@@ -1,16 +1,30 @@
 package com.atguigu.springmvc.handlers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/springmvc")
 @Controller
 public class SpringMVCTest {
 
     private static final String SUCCESS = "success";
+
+    /**
+     * 了解： @CookieValue 映射一个cookie值，属性同 @RequestParam
+     * @param sessionId
+     * @return
+     */
+    @RequestMapping("/testCookieValue")
+    public String testCookieValue(@CookieValue("JSESSIONID") String sessionId){
+        System.out.println("testCookieValue， sessionId: " + sessionId);
+        return SUCCESS;
+    }
+
+    @RequestMapping("/testRequestHeader")
+    public String testRequestHeader(@RequestHeader(value = "Accept-Language") String al){
+        System.out.println("testRequestHeader, Accept Language: " + al);
+        return SUCCESS;
+    }
 
     /**
      * @RequestParam 来映射请求参数

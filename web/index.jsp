@@ -12,6 +12,12 @@
   </head>
   <body>
 
+  <a href="springmvc/testCookieValue">Test Cookie Value</a>
+  <br><br>
+
+  <a href="springmvc/testRequestHeader">Test Request Header</a>
+  <br><br>
+
   <a href="springmvc/testRequestParam?username=Jason&age=11">Test RequestParam</a>
   <br><br>
 
