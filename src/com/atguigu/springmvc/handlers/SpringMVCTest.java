@@ -13,12 +13,49 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
-@SessionAttributes(value = {"user"}, types = {String.class})
+//@SessionAttributes(value = {"user"}, types = {String.class})
 @RequestMapping("/springmvc")
 @Controller
 public class SpringMVCTest {
 
     private static final String SUCCESS = "success";
+
+    /**
+     * 由  @ModelAttribute 标记的方法，会在每个目标方法执行之前被SpringMVC调用！！
+     * @param id
+     * @param map
+     */
+    @ModelAttribute
+    public void getUser(@RequestParam(value = "id", required = false) Integer id,
+                        Map<String, Object> map){
+        System.out.println("ModelAttribute method.......");
+        if (id != null){
+            //模拟从数据库中获取一个对象
+            User user = new User(1, "Tom", "123456", "tom@guigu.com", 12);
+            System.out.println("从数据库中获取一个对象 " + user);
+
+            map.put("user", user);
+        }
+
+    }
+
+    /**
+     *
+     * 运行流程：
+     * 1. 执行 @ModelAttribute 注解修饰的方法：从数据库中取出对象，把对象放入到Map中。键为user
+     * 2. SpringMVC 从Map中取出 User 对象，并把表单的请求参数赋给该user对象的对应属性
+     * 3. SpringMVC 把上述对象传入目标方法的参数
+     *
+     * 注意：在 @ModelAttribute 修饰的方法中，放入到Map时的键需要和目标方法入参类型的第一个字母小写的字符串一致！
+     *
+     * @param user
+     * @return
+     */
+    @RequestMapping("/testModelAttribute")
+    public String testModelAttribute(User user){
+        System.out.println("修改： " + user);
+        return SUCCESS;
+    }
 
     /**
      * @SessionAttributes 除了可以通过属性名指定需要放到会话中的属性外（实际上使用的是 value 属性值），
