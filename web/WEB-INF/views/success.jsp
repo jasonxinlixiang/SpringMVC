@@ -18,6 +18,15 @@ hello world
 time: ${requestScope.time}
 <br>
 names: ${requestScope.names}
+<br>
+request user: ${requestScope.user}
+<br>
+session user: ${sessionScope.user}
+<br>
+request school: ${requestScope.school}
+<br>
+session school: ${sessionScope.school}
+<br>
 </body>
 
 </html>
