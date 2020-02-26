@@ -12,6 +12,9 @@
   </head>
   <body>
 
+  <a href="springmvc/testMap">Test ModelAndView</a>
+  <br><br>
+
   <a href="springmvc/testModelAndView">Test ModelAndView</a>
   <br><br>
 

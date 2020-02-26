@@ -16,6 +16,8 @@ hello world
 <br/>
 <br>
 time: ${requestScope.time}
+<br>
+names: ${requestScope.names}
 </body>
 
 </html>

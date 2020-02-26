@@ -9,13 +9,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Map;
 
 @RequestMapping("/springmvc")
 @Controller
 public class SpringMVCTest {
 
     private static final String SUCCESS = "success";
+
+    /**
+     * 目标方法可以添加 Map 类型(实际上也可以是Model 类型或是ModelMap 类型)的参数
+     * @param map
+     * @return
+     */
+    @RequestMapping("/testMap")
+    public String testMap(Map<String, Object> map){
+        System.out.println(map.getClass().getName());
+        map.put("names", Arrays.asList("Tom", "Jerry", "Jason"));
+        return SUCCESS;
+    }
 
     /**
      * 目标方法的返回值可以是ModelAndView 类型
