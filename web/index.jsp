@@ -11,8 +11,13 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <form action="springmvc/testMethod" method="POST">
+    <input value="submit" type="submit">
+  </form>
 
+  <br><br>
+  <a href="springmvc/testRequestMapping">Test RequestMapping</a>
+  <br><br>
   <a href="helloworld">Hello World</a>
   </body>
 </html>
