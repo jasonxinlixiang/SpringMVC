@@ -3,12 +3,61 @@ package com.atguigu.springmvc.handlers;
 import com.atguigu.springmvc.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Date;
 
 @RequestMapping("/springmvc")
 @Controller
 public class SpringMVCTest {
 
     private static final String SUCCESS = "success";
+
+    /**
+     * 目标方法的返回值可以是ModelAndView 类型
+     * 其中可以包含视图和模型信息
+     * Spring MVC 会把 ModelAndView 的model中数据放入到request域对象中
+     * @return
+     */
+    @RequestMapping("/testModelAndView")
+    public ModelAndView testModelAndView(){
+        String viewName = SUCCESS;
+        ModelAndView modelAndView = new ModelAndView(viewName);
+
+        //添加模型数据到ModelAndView中
+        modelAndView.addObject("time", new Date());
+
+        return modelAndView;
+    }
+
+    /**
+     * 可以使用 servlet 原生的API作为目标方法的参数， 具体支持以下类型：
+     *
+     * HttpServletRequest
+     * HttpServletResponse
+     * HttpSession
+     * java.security.Principal
+     * Locale InputStream
+     * OutputStream
+     * Reader
+     * Writer
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("/testServletAPI")
+    public void testServletAPI(HttpServletRequest request,
+                                 HttpServletResponse response,
+                                 Writer out) throws IOException {
+        System.out.println("testServletAPI " + request + ", " + response);
+        out.write("hello Spring MVC");
+        //return SUCCESS;
+    }
 
     @RequestMapping("/testPojo")
     public String testPojo(User user){

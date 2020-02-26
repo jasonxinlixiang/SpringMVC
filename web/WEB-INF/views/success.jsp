@@ -12,7 +12,10 @@
 </head>
 <body>
 
-hello world,${name}
-<br/>${url}</body>
+hello world
+<br/>
+<br>
+time: ${requestScope.time}
 </body>
+
 </html>
