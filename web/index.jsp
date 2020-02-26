@@ -12,16 +12,20 @@
   </head>
   <body>
 
+  <a href="springmvc/testPathVariable/1">Test PathVariable</a>
   <br><br>
-  <a href="springmvc/testParamsAndHeaders?username=atguigu&age=14">Test ParamsAndHeaders</a>
 
+  <a href="springmvc/testAntPath/xxyy/abc">Test AntPath</a>
+  <br><br>
+
+  <a href="springmvc/testParamsAndHeaders?username=atguigu&age=14">Test ParamsAndHeaders</a>
   <br><br>
 
   <form action="springmvc/testMethod" method="POST">
     <input value="submit" type="submit">
   </form>
-
   <br><br>
+
   <a href="springmvc/testRequestMapping">Test RequestMapping</a>
 
   <br><br>

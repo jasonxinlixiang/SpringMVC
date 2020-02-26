@@ -1,6 +1,7 @@
 package com.atguigu.springmvc.handlers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -9,6 +10,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SpringMVCTest {
 
     private static final String SUCCESS = "success";
+
+    /**
+     * @PathVariable 可以来映射URL中的占位符到目标方法的参数中
+     * @param id
+     * @return
+     */
+    @RequestMapping("/testPathVariable/{id}")
+    public String testPathVariable(@PathVariable("id") Integer id){
+        System.out.println("testPathVariable: " + id);
+        return SUCCESS;
+    }
+
+
+    @RequestMapping("/testAntPath/*/abc")
+    public String testAntPath(){
+        System.out.println("testAntPath");
+        return SUCCESS;
+    }
 
     /**
      * 了解： 可以使用params和headers来更加精确的映射请求，params和headers 支持简单的表达式
