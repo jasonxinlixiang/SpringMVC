@@ -48,6 +48,20 @@ public class SpringMVCTest {
      *
      * 注意：在 @ModelAttribute 修饰的方法中，放入到Map时的键需要和目标方法入参类型的第一个字母小写的字符串一致！
      *
+     * SpringMVC 确定目标方法POJO类型入参的过程
+     *  1. 确定一个Key
+     *  1）若目标方法的POJO类型的参数没有使用 @SessionAttributes 作为修饰，则key为POJO类名第一个字母的小写
+     *  2）若使用了@SessionAttributes 来修饰，则key 为@ModelAttribute 注解的value属性值
+     *  2. 在implicitModel中查找key 对应的对象，若存在，则作为入参传入
+     *  1）若在@ModelAttribute 标记的方法中在Map 中保存过，且Key 和 1 确定的key一致，则会获取到。
+     *  3. 若implicitModel中不存在key 对应的对象，则检查当前的handler 是否使用@SessionAttributes 注解修饰，
+     *  若使用了该注解，且@SessionAttributes 注解的value 属性值中包含了key, 则会从HttpSession 中来获取key 所
+     *  对应的value 值，若存在则直接传入到目标方法的入参中，若不存在则将抛出异常。
+     *  4. 若Handler 没有标识@SessionAttributes 注解或 @SessionAttributes 注解的value值中不包含key, 则会
+     *  通过反射来创建POJO类型的参数，传入为目标方法的参数
+     *  5. SpringMVC 会把key和POJO类型的对象保存到implicitModel中，进而会保存到request 中。
+     *
+     *
      * @param user
      * @return
      */
