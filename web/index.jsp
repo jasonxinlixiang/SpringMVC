@@ -12,6 +12,9 @@
   </head>
   <body>
 
+  <a href="springmvc/testViewAndViewResolver">Test ViewAndViewResolver</a>
+  <br><br>
+
   <!-- 模拟修改操作
       1. 原始数据为： 1， Tom, tom@guigu.com, 123456, 12
       2. 密码不能被修改

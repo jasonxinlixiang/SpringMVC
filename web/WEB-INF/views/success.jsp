@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: xiangxinli
@@ -27,6 +28,10 @@ request school: ${requestScope.school}
 <br>
 session school: ${sessionScope.school}
 <br>
+
+<fmt:message key="i18n.username"></fmt:message>
+<br><br>
+<fmt:message key="i18n.password"></fmt:message>
 </body>
 
 </html>
